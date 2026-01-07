@@ -13,7 +13,7 @@ A monorepo showcasing [StaticForms.xyz](https://www.staticforms.xyz) integration
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/static-forms-examples.git
+git clone https://github.com/static-forms/static-forms-examples.git
 cd static-forms-examples
 
 # Install dependencies
@@ -51,6 +51,26 @@ pnpm dev:nuxt    # Nuxt on http://localhost:3001
 ```bash
 pnpm build
 ```
+
+## Deployment
+
+Both examples are deployed on Vercel and available as live demos:
+
+- **Next.js Example**: [View Demo](https://your-next-app.vercel.app) *(Update this URL after deployment)*
+- **Nuxt Example**: [View Demo](https://your-nuxt-app.vercel.app) *(Update this URL after deployment)*
+
+### Deploy Your Own
+
+Each app can be independently deployed to Vercel:
+
+1. **Next.js**: See [apps/next-example/README.md](./apps/next-example/README.md) for deployment instructions
+2. **Nuxt**: See [apps/nuxt-example/README.md](./apps/nuxt-example/README.md) for deployment instructions
+
+### Quick Deploy
+
+[![Deploy Next.js with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/static-forms/static-forms-examples&project-name=staticforms-next&root-directory=apps/next-example&env=NEXT_PUBLIC_STATICFORMS_API_KEY&envDescription=Get%20your%20API%20key%20from%20StaticForms.xyz&envLink=https://www.staticforms.xyz)
+
+[![Deploy Nuxt with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/static-forms/static-forms-examples&project-name=staticforms-nuxt&root-directory=apps/nuxt-example&env=NUXT_PUBLIC_STATICFORMS_API_KEY&envDescription=Get%20your%20API%20key%20from%20StaticForms.xyz&envLink=https://www.staticforms.xyz)
 
 ## Project Structure
 
