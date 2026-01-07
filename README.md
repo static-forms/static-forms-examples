@@ -1,6 +1,6 @@
 # StaticForms Examples
 
-A monorepo showcasing [StaticForms.xyz](https://www.staticforms.xyz) integration across different frameworks. Each example demonstrates a simple contact form with name, email, and message fields.
+A monorepo showcasing [StaticForms.dev](https://www.staticforms.dev) integration across different frameworks. Each example demonstrates a simple contact form with name, email, and message fields.
 
 ## Getting Started
 
@@ -22,7 +22,7 @@ pnpm install
 
 ### Configuration
 
-1. Get your API key from [StaticForms.xyz](https://www.staticforms.xyz)
+1. Get your API key from [StaticForms.dev](https://www.staticforms.dev)
 2. Create environment files in each app directory:
 
 **Next.js** (`apps/next-example/.env.local`):
@@ -68,9 +68,9 @@ Each app can be independently deployed to Vercel:
 
 ### Quick Deploy
 
-[![Deploy Next.js with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/static-forms/static-forms-examples&project-name=staticforms-next&root-directory=apps/next-example&env=NEXT_PUBLIC_STATICFORMS_API_KEY&envDescription=Get%20your%20API%20key%20from%20StaticForms.xyz&envLink=https://www.staticforms.xyz)
+[![Deploy Next.js with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/static-forms/static-forms-examples&project-name=staticforms-next&root-directory=apps/next-example&env=NEXT_PUBLIC_STATICFORMS_API_KEY&envDescription=Get%20your%20API%20key%20from%20StaticForms.dev&envLink=https://www.staticforms.dev)
 
-[![Deploy Nuxt with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/static-forms/static-forms-examples&project-name=staticforms-nuxt&root-directory=apps/nuxt-example&env=NUXT_PUBLIC_STATICFORMS_API_KEY&envDescription=Get%20your%20API%20key%20from%20StaticForms.xyz&envLink=https://www.staticforms.xyz)
+[![Deploy Nuxt with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/static-forms/static-forms-examples&project-name=staticforms-nuxt&root-directory=apps/nuxt-example&env=NUXT_PUBLIC_STATICFORMS_API_KEY&envDescription=Get%20your%20API%20key%20from%20StaticForms.dev&envLink=https://www.staticforms.dev)
 
 ## Project Structure
 
@@ -114,7 +114,7 @@ The Nuxt example uses:
 Each example submits to the StaticForms API:
 
 ```javascript
-// POST https://api.staticforms.xyz/submit
+// POST https://api.staticforms.dev/submit
 {
   "apiKey": "YOUR_API_KEY",
   "name": "John Doe",

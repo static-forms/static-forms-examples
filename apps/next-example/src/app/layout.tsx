@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "StaticForms - Next.js Example",
-  description: "A simple contact form using StaticForms.xyz",
+  description: "A simple contact form using StaticForms.dev",
 };
 
 export default function RootLayout({

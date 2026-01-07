@@ -27,7 +27,7 @@ export default function ContactForm() {
     };
 
     try {
-      const response = await fetch("https://api.staticforms.xyz/submit", {
+      const response = await fetch("https://api.staticforms.dev/submit", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

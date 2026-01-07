@@ -1,6 +1,6 @@
 # StaticForms Next.js Example
 
-A simple contact form built with Next.js 15, React 19, and [StaticForms.xyz](https://www.staticforms.xyz).
+A simple contact form built with Next.js 15, React 19, and [StaticForms.dev](https://www.staticforms.dev).
 
 ## Features
 
@@ -9,7 +9,7 @@ A simple contact form built with Next.js 15, React 19, and [StaticForms.xyz](htt
 - Client-side form handling with `useState`
 - TypeScript
 - CSS Modules for styling
-- StaticForms.xyz API integration
+- StaticForms.dev API integration
 
 ## Live Demo
 
@@ -31,7 +31,7 @@ cp apps/next-example/env.example apps/next-example/.env.local
 
 ### Configuration
 
-1. Get your API key from [StaticForms.xyz](https://www.staticforms.xyz)
+1. Get your API key from [StaticForms.dev](https://www.staticforms.dev)
 2. Add it to `.env.local`:
 
 ```env
@@ -63,7 +63,7 @@ pnpm start
 
 ## Deploy to Vercel
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/static-forms/static-forms-examples&project-name=staticforms-next&root-directory=apps/next-example&env=NEXT_PUBLIC_STATICFORMS_API_KEY&envDescription=Get%20your%20API%20key%20from%20StaticForms.xyz&envLink=https://www.staticforms.xyz)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/static-forms/static-forms-examples&project-name=staticforms-next&root-directory=apps/next-example&env=NEXT_PUBLIC_STATICFORMS_API_KEY&envDescription=Get%20your%20API%20key%20from%20StaticForms.dev&envLink=https://www.staticforms.dev)
 
 ### Option 1: Deploy via Vercel Dashboard
 
@@ -108,7 +108,7 @@ Required environment variables for deployment:
 
 | Variable | Description | Example |
 |----------|-------------|---------|
-| `NEXT_PUBLIC_STATICFORMS_API_KEY` | Your StaticForms.xyz API key | `sf_xxxxxxxxxxxxx` |
+| `NEXT_PUBLIC_STATICFORMS_API_KEY` | Your StaticForms.dev API key | `sf_xxxxxxxxxxxxx` |
 
 **Important**: Add this in Vercel dashboard under Settings → Environment Variables
 
@@ -137,16 +137,16 @@ apps/next-example/
 ## How It Works
 
 1. User fills out the contact form
-2. Form data is sent to StaticForms.xyz API
+2. Form data is sent to StaticForms.dev API
 3. StaticForms handles email delivery
 4. Success/error message is displayed
 
 ## StaticForms API Integration
 
-The form uses the StaticForms.xyz API endpoint:
+The form uses the StaticForms.dev API endpoint:
 
 ```typescript
-POST https://api.staticforms.xyz/submit
+POST https://api.staticforms.dev/submit
 Content-Type: application/json
 
 {
@@ -162,7 +162,7 @@ Content-Type: application/json
 ## Learn More
 
 - [Next.js Documentation](https://nextjs.org/docs)
-- [StaticForms.xyz Documentation](https://www.staticforms.xyz/docs)
+- [StaticForms.dev Documentation](https://www.staticforms.dev/docs)
 - [Vercel Deployment Documentation](https://vercel.com/docs)
 
 ## License

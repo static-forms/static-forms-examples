@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a Turborepo monorepo demonstrating StaticForms.xyz integration across different frameworks (Next.js and Nuxt). Each example implements a simple contact form that submits to the StaticForms API.
+This is a Turborepo monorepo demonstrating StaticForms.dev integration across different frameworks (Next.js and Nuxt). Each example implements a simple contact form that submits to the StaticForms API.
 
 ## Development Commands
 
@@ -63,7 +63,7 @@ Both examples follow the same integration pattern:
    - Next.js: `NEXT_PUBLIC_STATICFORMS_API_KEY` in `.env.local`
    - Nuxt: `NUXT_PUBLIC_STATICFORMS_API_KEY` in `.env`, accessed via `useRuntimeConfig()`
 
-2. **Form Submission**: POST to `https://api.staticforms.xyz/submit` with payload:
+2. **Form Submission**: POST to `https://api.staticforms.dev/submit` with payload:
    ```typescript
    {
      apiKey: string,
@@ -115,7 +115,7 @@ NEXT_PUBLIC_STATICFORMS_API_KEY=your_api_key_here
 NUXT_PUBLIC_STATICFORMS_API_KEY=your_api_key_here
 ```
 
-Get API keys from https://www.staticforms.xyz
+Get API keys from https://www.staticforms.dev
 
 ## Turbo Configuration
 

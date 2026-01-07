@@ -6,11 +6,11 @@
         <p class="subtitle">
           Nuxt example using
           <a
-            href="https://www.staticforms.xyz"
+            href="https://www.staticforms.dev"
             target="_blank"
             rel="noopener noreferrer"
           >
-            StaticForms.xyz
+            StaticForms.dev
           </a>
         </p>
       </header>

@@ -27,7 +27,7 @@ async function handleSubmit() {
 
   try {
     const result = await $fetch<{ success: boolean; message?: string }>(
-      "https://api.staticforms.xyz/submit",
+      "https://api.staticforms.dev/submit",
       {
         method: "POST",
         headers: {

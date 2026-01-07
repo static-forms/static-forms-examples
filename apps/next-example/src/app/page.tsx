@@ -10,11 +10,11 @@ export default function Home() {
           <p className={styles.subtitle}>
             Next.js example using{" "}
             <a
-              href="https://www.staticforms.xyz"
+              href="https://www.staticforms.dev"
               target="_blank"
               rel="noopener noreferrer"
             >
-              StaticForms.xyz
+              StaticForms.dev
             </a>
           </p>
         </header>
