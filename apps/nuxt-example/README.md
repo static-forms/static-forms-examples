@@ -1,168 +1,95 @@
 # StaticForms Nuxt Example
 
-A simple contact form built with Nuxt 3, Vue 3, and [StaticForms.dev](https://www.staticforms.dev).
+A contact form built with **Nuxt 4 + Vue 3.5** that sends submissions to your inbox through [StaticForms.dev](https://www.staticforms.dev). There's no backend to write or host.
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fstatic-forms%2Fstatic-forms-examples&root-directory=apps%2Fnuxt-example&project-name=staticforms-nuxt&repository-name=staticforms-nuxt-example&env=NUXT_PUBLIC_STATICFORMS_API_KEY&envDescription=Your%20StaticForms.dev%20API%20key&envLink=https%3A%2F%2Fwww.staticforms.dev%2Fdocs)
+
+> 📖 **Step-by-step tutorial:** [Using Static Forms with Nuxt.js](https://www.staticforms.dev/blog/using-staticforms-with-nuxtjs) on the StaticForms blog.
 
 ## Features
 
-- Nuxt 3 with Server-Side Rendering
-- Vue 3 Composition API
-- `reactive` and `ref` for state management
-- TypeScript
-- Scoped CSS styling
-- StaticForms.dev API integration
+- Nuxt 4 `app/` directory structure
+- `useRuntimeConfig()` for the API key (overridable at runtime)
+- `$fetch` for the request
+- `reactive()` / `ref()` state
+- Scoped CSS
+- Loading, success and error states
+- Shared styling with every other example in [this repo](https://github.com/static-forms/static-forms-examples)
 
-## Live Demo
-
-[View Live Demo](https://your-app-name.vercel.app) *(Update this URL after deployment)*
-
-## Local Development
-
-### Prerequisites
-
-From the monorepo root:
+## Quick Start
 
 ```bash
-# Install dependencies
+# From the monorepo root
 pnpm install
-
-# Create environment file
 cp apps/nuxt-example/env.example apps/nuxt-example/.env
-```
-
-### Configuration
-
-1. Get your API key from [StaticForms.dev](https://www.staticforms.dev)
-2. Add it to `.env`:
-
-```env
-NUXT_PUBLIC_STATICFORMS_API_KEY=your_api_key_here
-```
-
-### Running Locally
-
-```bash
-# From monorepo root
+# Add your API key to the new file, then:
 pnpm dev:nuxt
-
-# Or from this directory
-pnpm dev
 ```
 
-The app will be available at [http://localhost:3001](http://localhost:3001).
+The app runs on [http://localhost:3001](http://localhost:3001).
 
-## Building for Production
+## Environment Variables
 
-```bash
-# From monorepo root
-pnpm build --filter=nuxt-example
+| Variable | Description |
+|----------|-------------|
+| `NUXT_PUBLIC_STATICFORMS_API_KEY` | Your StaticForms.dev API key. Get one free at [staticforms.dev](https://www.staticforms.dev). |
 
-# Preview production build
-cd apps/nuxt-example
-pnpm preview
-```
+Locally, put it in `.env`. On Vercel, the deploy button asks for it; you can also add it later under **Settings → Environment Variables**.
+
+> The env file keeps your key out of git. Like the hidden `apiKey` field in a plain HTML form, the key is still visible in the browser once the site is deployed.
 
 ## Deploy to Vercel
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/static-forms/static-forms-examples&project-name=staticforms-nuxt&root-directory=apps/nuxt-example&env=NUXT_PUBLIC_STATICFORMS_API_KEY&envDescription=Get%20your%20API%20key%20from%20StaticForms.dev&envLink=https://www.staticforms.dev)
+Click **Deploy with Vercel** above. Vercel copies this repository into your account, sets the project's **Root Directory** to `apps/nuxt-example` and asks for `NUXT_PUBLIC_STATICFORMS_API_KEY`.
 
-### Option 1: Deploy via Vercel Dashboard
+`vercel.json` in this folder installs only this example's dependencies from the monorepo. Output: SSR (Nitro, Vercel preset).
 
-1. Go to [vercel.com/new](https://vercel.com/new)
-2. Import your Git repository
-3. Configure the project:
-   - **Framework Preset**: Nuxt.js
-   - **Root Directory**: `apps/nuxt-example`
-   - **Build Command**: `cd ../.. && pnpm turbo build --filter=nuxt-example`
-   - **Output Directory**: `.output`
-   - **Install Command**: `cd ../.. && pnpm install`
-4. Add environment variable:
-   - Key: `NUXT_PUBLIC_STATICFORMS_API_KEY`
-   - Value: Your StaticForms API key
-5. Click "Deploy"
-
-### Option 2: Deploy via Vercel CLI
-
-```bash
-# Install Vercel CLI
-pnpm add -g vercel
-
-# From this directory
-cd apps/nuxt-example
-vercel
-
-# Follow prompts and configure:
-# - Build Command: cd ../.. && pnpm turbo build --filter=nuxt-example
-# - Output Directory: .output
-# - Install Command: cd ../.. && pnpm install
-
-# Add environment variable
-vercel env add NUXT_PUBLIC_STATICFORMS_API_KEY
-
-# Deploy to production
-vercel --prod
-```
-
-### Environment Variables
-
-Required environment variables for deployment:
-
-| Variable | Description | Example |
-|----------|-------------|---------|
-| `NUXT_PUBLIC_STATICFORMS_API_KEY` | Your StaticForms.dev API key | `sf_xxxxxxxxxxxxx` |
-
-**Important**: Add this in Vercel dashboard under Settings → Environment Variables
+To deploy manually, import the repository at [vercel.com/new](https://vercel.com/new), set **Root Directory** to `apps/nuxt-example`, add the environment variable, and deploy.
 
 ## Project Structure
 
-```
-apps/nuxt-example/
-├── pages/
-│   └── index.vue              # Home page
-├── components/
-│   └── ContactForm.vue        # Contact form component
-├── assets/
-│   └── css/
-│       └── main.css           # Global styles
-├── public/                    # Static assets
-├── .env                       # Environment variables (local)
-├── env.example                # Environment template
-├── nuxt.config.ts             # Nuxt configuration
-├── tsconfig.json              # TypeScript configuration
-├── vercel.json                # Vercel deployment config
-├── app.vue                    # Root Vue component
-└── package.json
-```
+| Path | Purpose |
+|------|---------|
+| `app/app.vue` | Root component |
+| `app/pages/index.vue` | Home page |
+| `app/components/ContactForm.vue` | Contact form |
+| `nuxt.config.ts` | Runtime config for the API key |
+| `vercel.json` | Vercel deployment settings |
+| `env.example` | Environment variable template |
 
 ## How It Works
 
-1. User fills out the contact form
-2. Form data is sent to StaticForms.dev API via `$fetch`
-3. StaticForms handles email delivery
-4. Success/error message is displayed
+The form `POST`s JSON to the StaticForms API:
 
-## StaticForms API Integration
-
-The form uses the StaticForms.dev API endpoint:
-
-```typescript
+```http
 POST https://api.staticforms.dev/submit
 Content-Type: application/json
 
 {
   "apiKey": "YOUR_API_KEY",
-  "name": "John Doe",
-  "email": "john@example.com",
+  "name": "Jane Doe",
+  "email": "jane@example.com",
   "message": "Hello!",
   "replyTo": "@",
   "subject": "New Contact Form Submission"
 }
 ```
 
+`"replyTo": "@"` sets the reply-to address to the sender's email. The API responds with `{ "success": true }`, or with `{ "success": false, "message": "..." }` when something goes wrong.
+
 ## Learn More
 
-- [Nuxt 3 Documentation](https://nuxt.com/docs)
-- [StaticForms.dev Documentation](https://www.staticforms.dev/docs)
-- [Vercel Deployment Documentation](https://vercel.com/docs)
+From the StaticForms blog:
+
+- [Using Static Forms with Nuxt.js](https://www.staticforms.dev/blog/using-staticforms-with-nuxtjs)
+- [Vue contact form tutorial](https://www.staticforms.dev/blog/vue-contact-form-tutorial)
+- [All StaticForms tutorials and guides](https://www.staticforms.dev/blog)
+
+Docs:
+
+- [StaticForms.dev documentation](https://www.staticforms.dev/docs)
+- [Nuxt documentation](https://nuxt.com/docs)
+- [Examples for other frameworks](https://github.com/static-forms/static-forms-examples#examples)
 
 ## License
 

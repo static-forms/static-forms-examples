@@ -15,6 +15,15 @@
         </p>
       </header>
       <ContactForm />
+      <p class="footer">
+        <a href="https://www.staticforms.dev/blog/using-staticforms-with-nuxtjs">
+          Read the Nuxt tutorial
+        </a>
+        ·
+        <a href="https://github.com/static-forms/static-forms-examples/tree/main/apps/nuxt-example">
+          View source
+        </a>
+      </p>
     </div>
   </main>
 </template>
@@ -48,6 +57,13 @@
 .subtitle {
   color: var(--text-secondary);
   font-size: 0.95rem;
+}
+
+.footer {
+  margin-top: 1.5rem;
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
 }
 
 .subtitle a {

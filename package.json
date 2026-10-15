@@ -1,17 +1,30 @@
 {
   "name": "static-forms-examples",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "private": true,
-  "packageManager": "pnpm@9.15.0",
+  "packageManager": "pnpm@10.34.7",
+  "engines": {
+    "node": ">=24"
+  },
   "scripts": {
     "dev": "turbo dev",
     "build": "turbo build",
     "lint": "turbo lint",
     "dev:next": "turbo dev --filter=next-example",
-    "dev:nuxt": "turbo dev --filter=nuxt-example"
+    "dev:nuxt": "turbo dev --filter=nuxt-example",
+    "dev:react": "turbo dev --filter=react-example",
+    "dev:vue": "turbo dev --filter=vue-example",
+    "dev:sveltekit": "turbo dev --filter=sveltekit-example",
+    "dev:astro": "turbo dev --filter=astro-example",
+    "dev:angular": "turbo dev --filter=angular-example",
+    "dev:react-router": "turbo dev --filter=react-router-example",
+    "dev:solid-start": "turbo dev --filter=solid-start-example",
+    "dev:qwik": "turbo dev --filter=qwik-example",
+    "dev:gatsby": "turbo dev --filter=gatsby-example",
+    "dev:eleventy": "turbo dev --filter=eleventy-example",
+    "dev:html": "turbo dev --filter=html-example"
   },
   "devDependencies": {
-    "turbo": "^2.3.3"
+    "turbo": "^2.11.8"
   }
 }
-

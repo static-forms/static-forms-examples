@@ -1,169 +1,96 @@
 # StaticForms Next.js Example
 
-A simple contact form built with Next.js 15, React 19, and [StaticForms.dev](https://www.staticforms.dev).
+A contact form built with **Next.js 16 + React 19** that sends submissions to your inbox through [StaticForms.dev](https://www.staticforms.dev). There's no backend to write or host.
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fstatic-forms%2Fstatic-forms-examples&root-directory=apps%2Fnext-example&project-name=staticforms-next&repository-name=staticforms-next-example&env=NEXT_PUBLIC_STATICFORMS_API_KEY&envDescription=Your%20StaticForms.dev%20API%20key&envLink=https%3A%2F%2Fwww.staticforms.dev%2Fdocs)
+
+> 📖 **Step-by-step tutorial:** [Using Static Forms with Next.js: A Complete Guide](https://www.staticforms.dev/blog/using-staticforms-with-nextjs) on the StaticForms blog.
 
 ## Features
 
-- Next.js 15 with App Router
-- React 19 with Server Components
-- Client-side form handling with `useState`
-- TypeScript
-- CSS Modules for styling
-- StaticForms.dev API integration
+- App Router with React Server Components
+- Client component (`"use client"`) for the form
+- `useState` for form status
+- CSS Modules
+- Turbopack dev server (default in Next.js 16)
+- Loading, success and error states
+- Shared styling with every other example in [this repo](https://github.com/static-forms/static-forms-examples)
 
-## Live Demo
-
-[View Live Demo](https://your-app-name.vercel.app) *(Update this URL after deployment)*
-
-## Local Development
-
-### Prerequisites
-
-From the monorepo root:
+## Quick Start
 
 ```bash
-# Install dependencies
+# From the monorepo root
 pnpm install
-
-# Create environment file
 cp apps/next-example/env.example apps/next-example/.env.local
-```
-
-### Configuration
-
-1. Get your API key from [StaticForms.dev](https://www.staticforms.dev)
-2. Add it to `.env.local`:
-
-```env
-NEXT_PUBLIC_STATICFORMS_API_KEY=your_api_key_here
-```
-
-### Running Locally
-
-```bash
-# From monorepo root
+# Add your API key to the new file, then:
 pnpm dev:next
-
-# Or from this directory
-pnpm dev
 ```
 
-The app will be available at [http://localhost:3000](http://localhost:3000).
+The app runs on [http://localhost:3000](http://localhost:3000).
 
-## Building for Production
+## Environment Variables
 
-```bash
-# From monorepo root
-pnpm build --filter=next-example
+| Variable | Description |
+|----------|-------------|
+| `NEXT_PUBLIC_STATICFORMS_API_KEY` | Your StaticForms.dev API key. Get one free at [staticforms.dev](https://www.staticforms.dev). |
 
-# Start production server
-cd apps/next-example
-pnpm start
-```
+Locally, put it in `.env.local`. On Vercel, the deploy button asks for it; you can also add it later under **Settings → Environment Variables**.
+
+> The env file keeps your key out of git. Like the hidden `apiKey` field in a plain HTML form, the key is still visible in the browser once the site is deployed.
 
 ## Deploy to Vercel
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/static-forms/static-forms-examples&project-name=staticforms-next&root-directory=apps/next-example&env=NEXT_PUBLIC_STATICFORMS_API_KEY&envDescription=Get%20your%20API%20key%20from%20StaticForms.dev&envLink=https://www.staticforms.dev)
+Click **Deploy with Vercel** above. Vercel copies this repository into your account, sets the project's **Root Directory** to `apps/next-example` and asks for `NEXT_PUBLIC_STATICFORMS_API_KEY`.
 
-### Option 1: Deploy via Vercel Dashboard
+`vercel.json` in this folder installs only this example's dependencies from the monorepo. Output: Hybrid (Vercel Next.js runtime).
 
-1. Go to [vercel.com/new](https://vercel.com/new)
-2. Import your Git repository
-3. Configure the project:
-   - **Framework Preset**: Next.js
-   - **Root Directory**: `apps/next-example`
-   - **Build Command**: `cd ../.. && pnpm turbo build --filter=next-example`
-   - **Output Directory**: `.next`
-   - **Install Command**: `cd ../.. && pnpm install`
-4. Add environment variable:
-   - Key: `NEXT_PUBLIC_STATICFORMS_API_KEY`
-   - Value: Your StaticForms API key
-5. Click "Deploy"
-
-### Option 2: Deploy via Vercel CLI
-
-```bash
-# Install Vercel CLI
-pnpm add -g vercel
-
-# From this directory
-cd apps/next-example
-vercel
-
-# Follow prompts and configure:
-# - Build Command: cd ../.. && pnpm turbo build --filter=next-example
-# - Output Directory: .next
-# - Install Command: cd ../.. && pnpm install
-
-# Add environment variable
-vercel env add NEXT_PUBLIC_STATICFORMS_API_KEY
-
-# Deploy to production
-vercel --prod
-```
-
-### Environment Variables
-
-Required environment variables for deployment:
-
-| Variable | Description | Example |
-|----------|-------------|---------|
-| `NEXT_PUBLIC_STATICFORMS_API_KEY` | Your StaticForms.dev API key | `sf_xxxxxxxxxxxxx` |
-
-**Important**: Add this in Vercel dashboard under Settings → Environment Variables
+To deploy manually, import the repository at [vercel.com/new](https://vercel.com/new), set **Root Directory** to `apps/next-example`, add the environment variable, and deploy.
 
 ## Project Structure
 
-```
-apps/next-example/
-├── src/
-│   ├── app/
-│   │   ├── page.tsx              # Home page
-│   │   ├── page.module.css       # Page styles
-│   │   ├── layout.tsx            # Root layout
-│   │   └── globals.css           # Global styles
-│   └── components/
-│       ├── ContactForm.tsx       # Contact form component
-│       └── ContactForm.module.css
-├── public/                        # Static assets
-├── .env.local                     # Environment variables (local)
-├── env.example                    # Environment template
-├── next.config.ts                 # Next.js configuration
-├── tsconfig.json                  # TypeScript configuration
-├── vercel.json                    # Vercel deployment config
-└── package.json
-```
+| Path | Purpose |
+|------|---------|
+| `src/app/page.tsx` | Home page |
+| `src/app/layout.tsx` | Root layout and metadata |
+| `src/components/ContactForm.tsx` | Contact form (client component) |
+| `src/components/ContactForm.module.css` | Form styles |
+| `vercel.json` | Vercel deployment settings |
+| `env.example` | Environment variable template |
 
 ## How It Works
 
-1. User fills out the contact form
-2. Form data is sent to StaticForms.dev API
-3. StaticForms handles email delivery
-4. Success/error message is displayed
+The form `POST`s JSON to the StaticForms API:
 
-## StaticForms API Integration
-
-The form uses the StaticForms.dev API endpoint:
-
-```typescript
+```http
 POST https://api.staticforms.dev/submit
 Content-Type: application/json
 
 {
   "apiKey": "YOUR_API_KEY",
-  "name": "John Doe",
-  "email": "john@example.com",
+  "name": "Jane Doe",
+  "email": "jane@example.com",
   "message": "Hello!",
   "replyTo": "@",
   "subject": "New Contact Form Submission"
 }
 ```
 
+`"replyTo": "@"` sets the reply-to address to the sender's email. The API responds with `{ "success": true }`, or with `{ "success": false, "message": "..." }` when something goes wrong.
+
 ## Learn More
 
-- [Next.js Documentation](https://nextjs.org/docs)
-- [StaticForms.dev Documentation](https://www.staticforms.dev/docs)
-- [Vercel Deployment Documentation](https://vercel.com/docs)
+From the StaticForms blog:
+
+- [Using Static Forms with Next.js: A Complete Guide](https://www.staticforms.dev/blog/using-staticforms-with-nextjs)
+- [Next.js contact form with document upload](https://www.staticforms.dev/blog/nextjs-contact-form-document-upload)
+- [Adding ALTCHA captcha to a Next.js form](https://www.staticforms.dev/blog/implementing-altcha-captcha-nextjs)
+- [All StaticForms tutorials and guides](https://www.staticforms.dev/blog)
+
+Docs:
+
+- [StaticForms.dev documentation](https://www.staticforms.dev/docs)
+- [Next.js documentation](https://nextjs.org/docs)
+- [Examples for other frameworks](https://github.com/static-forms/static-forms-examples#examples)
 
 ## License
 

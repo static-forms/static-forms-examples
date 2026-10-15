@@ -28,3 +28,10 @@
   font-size: 0.95rem;
 }
 
+
+.footer {
+  margin-top: 1.5rem;
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}

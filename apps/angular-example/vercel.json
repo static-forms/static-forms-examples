@@ -1,0 +1,6 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "installCommand": "pnpm install --filter angular-example...",
+  "framework": "angular",
+  "outputDirectory": "dist/angular-example/browser"
+}

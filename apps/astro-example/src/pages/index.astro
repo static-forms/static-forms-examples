@@ -1,0 +1,39 @@
+---
+import ContactForm from '../components/ContactForm.astro';
+import '../styles.css';
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="description" content="A simple contact form using StaticForms.dev" />
+		<meta name="generator" content={Astro.generator} />
+		<title>StaticForms - Astro Example</title>
+	</head>
+	<body>
+		<main class="main">
+			<div class="container">
+				<header class="header">
+					<h1 class="title">Contact Us</h1>
+					<p class="subtitle">
+						Astro example using
+						<a href="https://www.staticforms.dev" target="_blank" rel="noopener noreferrer">
+							StaticForms.dev
+						</a>
+					</p>
+				</header>
+				<ContactForm />
+				<p class="footer">
+					<a href="https://www.staticforms.dev/blog/astro-contact-form-tutorial">Read the Astro tutorial</a>
+					·
+					<a href="https://github.com/static-forms/static-forms-examples/tree/main/apps/astro-example">
+						View source
+					</a>
+				</p>
+			</div>
+		</main>
+	</body>
+</html>

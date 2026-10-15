@@ -1,0 +1,65 @@
+---
+title: StaticForms - Eleventy Example
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="A simple contact form using StaticForms.dev" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+    <link rel="stylesheet" href="/assets/styles.css" />
+    <title>{{ title }}</title>
+  </head>
+  <body>
+    <main class="main">
+      <div class="container">
+        <header class="header">
+          <h1 class="title">Contact Us</h1>
+          <p class="subtitle">
+            Eleventy example using
+            <a href="https://www.staticforms.dev" target="_blank" rel="noopener noreferrer">StaticForms.dev</a>
+          </p>
+        </header>
+
+        <div class="success-message" id="success-message" hidden>
+          <svg class="success-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+          </svg>
+          <h2>Message Sent!</h2>
+          <p>Thank you for reaching out. We'll get back to you soon.</p>
+          <button type="button" class="reset-button" id="reset-button">Send another message</button>
+        </div>
+
+        <form class="form" id="contact-form" data-api-key="{{ site.staticformsApiKey }}">
+          <div class="field">
+            <label for="name" class="label">Name</label>
+            <input type="text" id="name" name="name" class="input" placeholder="Your name" required />
+          </div>
+
+          <div class="field">
+            <label for="email" class="label">Email</label>
+            <input type="email" id="email" name="email" class="input" placeholder="your@email.com" required />
+          </div>
+
+          <div class="field">
+            <label for="message" class="label">Message</label>
+            <textarea id="message" name="message" class="textarea" placeholder="Your message..." rows="5" required></textarea>
+          </div>
+
+          <div class="error-message" id="error-message" hidden></div>
+
+          <button type="submit" class="submit-button" id="submit-button">Send Message</button>
+        </form>
+
+        <p class="footer">
+          <a href="https://www.staticforms.dev/blog/eleventy-contact-form">Read the Eleventy tutorial</a>
+          ·
+          <a href="https://github.com/static-forms/static-forms-examples/tree/main/apps/eleventy-example">View source</a>
+        </p>
+      </div>
+    </main>
+    <script type="module" src="/assets/contact-form.js"></script>
+  </body>
+</html>

@@ -1,0 +1,23 @@
+{
+  "name": "gatsby-example",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "gatsby develop --port 3010",
+    "build": "gatsby build",
+    "serve": "gatsby serve --port 3010",
+    "clean": "gatsby clean",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "gatsby": "^5.16.1",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^24.13.3",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "typescript": "~6.0.2"
+  }
+}

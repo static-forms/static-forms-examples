@@ -1,0 +1,14 @@
+{
+  "name": "html-example",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/build.mjs && serve dist --listen 3012",
+    "build": "node scripts/build.mjs",
+    "preview": "serve dist --listen 3012"
+  },
+  "devDependencies": {
+    "serve": "^14.2.5"
+  }
+}
