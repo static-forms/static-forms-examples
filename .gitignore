@@ -4,17 +4,25 @@ node_modules
 
 # Build outputs
 .next
+next-env.d.ts
 .nuxt
 .output
+.svelte-kit
+.astro
+.angular
+.react-router
+.cache
+build
 dist
+_site
 
 # Turbo
 .turbo
 
 # Environment
 .env
-.env.local
-.env.*.local
+.env.*
+!env.example
 
 # IDE
 .vscode

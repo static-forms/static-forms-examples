@@ -19,6 +19,15 @@ export default function Home() {
           </p>
         </header>
         <ContactForm />
+        <p className={styles.footer}>
+          <a href="https://www.staticforms.dev/blog/using-staticforms-with-nextjs">
+            Read the Next.js tutorial
+          </a>{" "}
+          ·{" "}
+          <a href="https://github.com/static-forms/static-forms-examples/tree/main/apps/next-example">
+            View source
+          </a>
+        </p>
       </div>
     </main>
   );

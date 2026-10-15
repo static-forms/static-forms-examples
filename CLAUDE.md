@@ -4,122 +4,57 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a Turborepo monorepo demonstrating StaticForms.dev integration across different frameworks (Next.js and Nuxt). Each example implements a simple contact form that submits to the StaticForms API.
+This is a Turborepo monorepo demonstrating StaticForms.dev integration across 13 frameworks. Each app in `apps/*` implements the same contact form (name, email, message) that submits to the StaticForms API, with identical states and styling.
+
+| App | Stack | Dev port | API key env var |
+|-----|-------|----------|-----------------|
+| `next-example` | Next.js 16 (App Router) | 3000 | `NEXT_PUBLIC_STATICFORMS_API_KEY` |
+| `nuxt-example` | Nuxt 4 | 3001 | `NUXT_PUBLIC_STATICFORMS_API_KEY` (runtime config) |
+| `react-example` | React 19 + Vite 8 | 3002 | `VITE_STATICFORMS_API_KEY` |
+| `vue-example` | Vue 3.5 + Vite 8 | 3003 | `VITE_STATICFORMS_API_KEY` |
+| `sveltekit-example` | SvelteKit 3 + Svelte 5 | 3004 | `PUBLIC_STATICFORMS_API_KEY` (declared in `src/env.ts`) |
+| `astro-example` | Astro 7 | 3005 | `PUBLIC_STATICFORMS_API_KEY` |
+| `angular-example` | Angular 22 | 3006 | `NG_APP_STATICFORMS_API_KEY` (written to `src/env.generated.ts` by `scripts/write-env.mjs`) |
+| `react-router-example` | React Router 8, SPA mode | 3007 | `VITE_STATICFORMS_API_KEY` |
+| `solid-start-example` | SolidStart 2 | 3008 | `VITE_STATICFORMS_API_KEY` |
+| `qwik-example` | Qwik 1.20 + Qwik City (static adapter) | 3009 | `PUBLIC_STATICFORMS_API_KEY` |
+| `gatsby-example` | Gatsby 5 | 3010 | `GATSBY_STATICFORMS_API_KEY` |
+| `eleventy-example` | Eleventy 3 | 3011 | `STATICFORMS_API_KEY` (read in `src/_data/site.js`) |
+| `html-example` | Plain HTML + vanilla JS | 3012 | `STATICFORMS_API_KEY` (injected by `scripts/build.mjs`) |
 
 ## Development Commands
 
+Requires Node.js 24+ (`.nvmrc`) and pnpm 10.
+
 ```bash
-# Install dependencies
-pnpm install
-
-# Run all examples simultaneously
-pnpm dev
-
-# Run specific example
-pnpm dev:next    # Next.js on http://localhost:3000
-pnpm dev:nuxt    # Nuxt on http://localhost:3001
-
-# Build all apps
-pnpm build
-
-# Lint all apps
-pnpm lint
+pnpm install          # install all apps
+pnpm dev              # run every example
+pnpm dev:<key>        # run one: next, nuxt, react, vue, sveltekit, astro, angular,
+                      # react-router, solid-start, qwik, gatsby, eleventy, html
+pnpm build            # build all apps (Turborepo)
+pnpm lint             # lint apps that define a lint script
 ```
 
-### Per-App Commands
-
-**Next.js** (`apps/next-example`):
-```bash
-cd apps/next-example
-pnpm dev          # Development server with Turbopack
-pnpm build        # Production build
-pnpm start        # Production server
-pnpm lint         # ESLint
-```
-
-**Nuxt** (`apps/nuxt-example`):
-```bash
-cd apps/nuxt-example
-pnpm dev          # Development server
-pnpm build        # Production build
-pnpm generate     # Static site generation
-pnpm preview      # Preview production build
-pnpm lint         # ESLint
-```
+Each app's `env.example` documents its environment variable.
 
 ## Architecture
 
-### Monorepo Structure
-
-- **Turborepo**: Manages the monorepo build pipeline via `turbo.json`
-- **pnpm workspaces**: Handles dependency management across apps (`pnpm-workspace.yaml`)
-- **Apps**: Each framework example is isolated in `apps/*` with independent dependencies
+- **Turborepo** (`turbo.json`) runs `dev`/`build`/`lint`; the API key env vars are listed in `globalEnv` so cache keys change with them.
+- **pnpm workspaces** (`pnpm-workspace.yaml`): apps are independent, with no shared packages.
+- **Vercel**: each app has a `vercel.json` whose `installCommand` is `pnpm install --filter <app>...`. Deploy buttons in the READMEs use `root-directory=apps/<app>`. React Router, Qwik and HTML set `framework: null` with an explicit `outputDirectory` because they deploy as static files.
 
 ### StaticForms Integration Pattern
 
-Both examples follow the same integration pattern:
+Every example POSTs JSON from the browser to `https://api.staticforms.dev/submit`:
 
-1. **Environment Configuration**: API key stored in environment variables
-   - Next.js: `NEXT_PUBLIC_STATICFORMS_API_KEY` in `.env.local`
-   - Nuxt: `NUXT_PUBLIC_STATICFORMS_API_KEY` in `.env`, accessed via `useRuntimeConfig()`
-
-2. **Form Submission**: POST to `https://api.staticforms.dev/submit` with payload:
-   ```typescript
-   {
-     apiKey: string,
-     name: string,
-     email: string,
-     message: string,
-     replyTo: "@",  // Uses sender's email
-     subject: "New Contact Form Submission"
-   }
-   ```
-
-3. **Response Handling**: API returns `{ success: boolean, message?: string }`
-
-4. **State Management**: Four states tracked across both implementations:
-   - `idle`: Initial form state
-   - `loading`: Submitting form
-   - `success`: Submission successful (shows success message)
-   - `error`: Submission failed (shows error message)
-
-### Framework-Specific Patterns
-
-**Next.js** (`apps/next-example`):
-- App Router with React Server Components
-- Client component (`"use client"`) for form interactivity
-- CSS Modules for styling (`ContactForm.module.css`)
-- Native `fetch` API for HTTP requests
-- `FormData` for extracting form values
-- `useState` for state management
-
-**Nuxt** (`apps/nuxt-example`):
-- Composition API with `<script setup>`
-- Nuxt's `$fetch` utility for HTTP requests
-- `useRuntimeConfig()` for accessing environment variables
-- `reactive()` for form data, `ref()` for status/error state
-- Scoped CSS in Single File Components
-- CSS variables for theming
-
-## Environment Setup
-
-Create these files (not committed to git):
-
-**Next.js**: `apps/next-example/.env.local`
-```env
-NEXT_PUBLIC_STATICFORMS_API_KEY=your_api_key_here
+```typescript
+{ apiKey, name, email, message, replyTo: "@", subject: "New Contact Form Submission" }
 ```
 
-**Nuxt**: `apps/nuxt-example/.env`
-```env
-NUXT_PUBLIC_STATICFORMS_API_KEY=your_api_key_here
-```
+The API returns `{ success: boolean, message?: string }`. Each form tracks four states (`idle`, `loading`, `success`, `error`), disables fields while loading, shows the API's error message, and offers "Send another message" after success. Form values are read before fields are disabled, because disabled fields are excluded from `FormData`.
 
-Get API keys from https://www.staticforms.dev
+Most apps share one stylesheet (kebab-case classes such as `.form`, `.submit-button`, `.success-message`); Next.js uses the CSS Modules equivalent. Astro, Eleventy and HTML use a vanilla script that reads the key from the form's `data-api-key` attribute.
 
-## Turbo Configuration
+### Cross-links
 
-The `turbo.json` defines:
-- `dev`: No cache, persistent (keeps servers running)
-- `build`: Caches outputs in `.next/`, `.output/`, `dist/`
-- `lint`: Standard caching
+Each page footer and README links to the matching staticforms.dev blog tutorial (`https://www.staticforms.dev/blog/<slug>`). When adding a framework, also add the app to the root README table, add a `dev:<key>` script, and add a `vercel.json`.

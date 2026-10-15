@@ -1,3 +1,14 @@
 packages:
   - "apps/*"
 
+# Dependencies allowed to run install scripts
+onlyBuiltDependencies:
+  - "@parcel/watcher"
+  - esbuild
+  - gatsby
+  - gatsby-cli
+  - lmdb
+  - msgpackr-extract
+  - sharp
+  - unrs-resolver
+  - "@swc/core"

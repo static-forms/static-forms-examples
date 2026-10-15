@@ -1,14 +1,33 @@
 {
-  "$schema": "https://turbo.build/schema.json",
+  "$schema": "https://turborepo.com/schema.json",
+  "globalEnv": [
+    "NEXT_PUBLIC_STATICFORMS_API_KEY",
+    "NUXT_PUBLIC_STATICFORMS_API_KEY",
+    "VITE_STATICFORMS_API_KEY",
+    "PUBLIC_STATICFORMS_API_KEY",
+    "NG_APP_STATICFORMS_API_KEY",
+    "GATSBY_STATICFORMS_API_KEY",
+    "STATICFORMS_API_KEY"
+  ],
   "tasks": {
     "dev": {
       "cache": false,
       "persistent": true
     },
     "build": {
-      "outputs": [".next/**", "!.next/cache/**", ".output/**", "dist/**"]
+      "inputs": ["$TURBO_DEFAULT$", ".env*"],
+      "outputs": [
+        ".next/**",
+        "!.next/cache/**",
+        ".output/**",
+        ".vercel/output/**",
+        ".svelte-kit/**",
+        "dist/**",
+        "build/**",
+        "public/**",
+        "_site/**"
+      ]
     },
     "lint": {}
   }
 }
-
