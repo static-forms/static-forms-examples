@@ -12,3 +12,7 @@ onlyBuiltDependencies:
   - sharp
   - unrs-resolver
   - "@swc/core"
+
+overrides:
+  sharp: ">=0.35.5"
+  "@builder.io/qwik-city>zod": "^4.6.6"
